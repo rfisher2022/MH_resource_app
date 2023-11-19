@@ -5,7 +5,7 @@ account: rlynnfisher
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 10573161
-bundleId: 7945644
+bundleId: 7946008
 url: https://rlynnfisher.shinyapps.io/MH_resource_app/
 version: 1
 asMultiple: FALSE

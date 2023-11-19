@@ -46,7 +46,7 @@ m3 %>% addTiles()
 
 m4<-leaflet() %>% 
   setView(lng = -118.36, lat = 34.07, zoom = 13)%>%
-  addMarkers(~lon,~lat, popup=paste(sep = "<br/>",
+  addMarkers(data=providers,~lon,~lat, popup=paste(sep = "<br/>",
                                     providers$provider_name,
                                     providers$provider_practice_name,
                                     providers$provider_address,
@@ -54,8 +54,7 @@ m4<-leaflet() %>%
                                     paste0("<b> Language: </b>", providers$language),
                                     paste0("<b> Insurance: </b>",providers$insurance),
                                     paste0("<b> Conditions Treated: </b>",providers$conditions)))%>%
-  leaflet() %>% 
-  addAwesomeMarkers(~lon,~lat, icon=icons, 
+  addAwesomeMarkers(data=patients, ~lon,~lat, icon=icons, 
                     popup=paste(sep = "<br/>",
                                 patients$first_name,
                                 patients$last_name,
