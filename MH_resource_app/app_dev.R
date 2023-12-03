@@ -7,7 +7,7 @@ library(leaflet)
 
 
 
-providers<-read.csv("MH_resource_app/data/providers.csv")
+providers<-read.csv("MH_resource_app/data/providers.csv")%>%select(provider_name:additional)
 patients<-read.csv("MH_resource_app/data/person_records_BDandpostcodebase.csv")
 str(providers)
 str(patients)
@@ -25,8 +25,12 @@ m2<-leaflet(providers) %>% setView(lng = -118.36, lat = 34.07, zoom = 13)%>%
       paste0("<b>Gender: </b>",providers$gender),
       paste0("<b> Language: </b>", providers$language),
       paste0("<b> Insurance: </b>",providers$insurance),
-      paste0("<b> Conditions Treated: </b>",providers$conditions)))
+      paste0("<b> Conditions Treated: </b>",providers$conditions),
+      paste0("<b> Services: </b>",providers$service),
+      paste0("<b> Type: </b>",providers$type),
+      paste0("<b> Additional: </b>",providers$additional)))
      
+m2
 m2 %>% addTiles()
 icons <- awesomeIcons(
   icon = 'home',

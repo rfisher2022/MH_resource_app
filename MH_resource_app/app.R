@@ -47,7 +47,7 @@ ui <- fluidPage(
            DT::dataTableOutput("patient_record")
     ),
     column(9,
-           leafletOutput("provider_map"),
+           leafletOutput("provider_map", height=600),
            DT::dataTableOutput("provider_list")
     )
   ),
@@ -95,7 +95,7 @@ server <- function(input, output) {
                options=list(iDisplayLength=20,                    # initial number of records
                            aLengthMenu=c(5,10),                  # records/page options
                            bLengthChange=0,                       # show/hide records per page dropdown
-                           bFilter=0,                                    # global search box on/off
+                           bFilter=1,                                    # global search box on/off
                            bInfo=0)
   )
 
@@ -108,14 +108,20 @@ server <- function(input, output) {
   
   output$provider_map <- renderLeaflet({
     leaflet() %>% setView(lng = -118.36, lat = 34.07, zoom = 13)%>%
-      addMarkers(data=providers, ~lon,~lat, popup=paste(sep = "<br/>",
+      addMarkers(data=providers, ~lon,~lat, 
+                 label = providers$provider_name,
+                 labelOptions = labelOptions(noHide = T, textOnly = TRUE),
+                 popup=paste(sep = "<br/>",
                                         providers$provider_name,
                                         providers$provider_practice_name,
                                         providers$provider_address,
                                         paste0("<b>Gender: </b>",providers$gender),
                                         paste0("<b> Language: </b>", providers$language),
                                         paste0("<b> Insurance: </b>",providers$insurance),
-                                        paste0("<b> Conditions Treated: </b>",providers$conditions)))%>%
+                                        paste0("<b> Conditions Treated: </b>",providers$conditions),
+                                        paste0("<b> Services: </b>",providers$service),
+                                        paste0("<b> Type: </b>",providers$type),
+                                        paste0("<b> Additional: </b>",providers$additional)))%>%
       addAwesomeMarkers(data=patient.map.data(), ~lon,~lat, icon=icons, 
                         popup=paste(sep = "<br/>",
                                     patient.map.data()$First.Name,
@@ -127,14 +133,17 @@ server <- function(input, output) {
     addTiles()
   })
   
-  output$provider_list <-DT::renderDataTable(providers%>%dplyr::select(-4,-5), 
+  output$provider_list <-DT::renderDataTable(providers%>%dplyr::select(-4,-5)%>%dplyr::select(provider_name:additional), 
                                              colnames=c("Provider Name", 
                                                         "Provider Address",
                                                         "Provider Practice",
                                                         "Accepted Insurance",
                                                         "Provider Gender",
                                                         "Provider Language",
-                                                        "Conditions Treated"))
+                                                        "Conditions Treated",
+                                                        "Services",
+                                                        "Type",
+                                                        "Additional"))
   
   
 } 
