@@ -6,15 +6,15 @@ Code by: Rebecca Fisher
 Project, Use Case, and Design: Rebecca Fisher, Yuning Song, Kanishk Rai, Phoebe Adamyan, Zhuyu Qiu, Thalia Nguyen, Tiffany Luong
 
 ## Data Sources: 
-Provider data pulled from: 
-### ZocDoc (Provider names resource. Able to filter by location, insurance, gender, but not by specific diagnoses)
-### Psychology Today (Provider names resource. Able to filter by location, insurance, gender, diagnoses. Has some support group information but very limited)
-### Neighborhood Navigator (https://www.aafp.org/family-physician/patient-care/the-everyone-project/neighborhood-navigator.html) 
-### Community resources navigation tool
-### Maternal Mental Health Now Maternal Mental Health Resource Directory (maternalmentalhealthnow.org)
-### Los Angeles Maternal Mental Health Resource Directory
+### Provider data pulled from: 
+##### ZocDoc (Provider names resource. Able to filter by location, insurance, gender, but not by specific diagnoses)
+##### Psychology Today (Provider names resource. Able to filter by location, insurance, gender, diagnoses. Has some support group information but very limited)
+##### Neighborhood Navigator (https://www.aafp.org/family-physician/patient-care/the-everyone-project/neighborhood-navigator.html) 
+##### Community resources navigation tool
+##### Maternal Mental Health Now Maternal Mental Health Resource Directory (maternalmentalhealthnow.org)
+##### Los Angeles Maternal Mental Health Resource Directory
 
-Patient Data is all fake generated data. 
+### Patient Data is all fake generated data. 
 
 ## Development Process:
 For the application prototype development, we generated a dataset of providers and resources via the below sites for the use case patient (Gabreiela Ruta).  
