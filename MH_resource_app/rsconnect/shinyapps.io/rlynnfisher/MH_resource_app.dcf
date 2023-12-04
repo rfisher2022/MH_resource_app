@@ -1,0 +1,13 @@
+name: MH_resource_app
+title: MH_resource_app
+username: rlynnfisher
+account: rlynnfisher
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 10573161
+bundleId: 8001808
+url: https://rlynnfisher.shinyapps.io/MH_resource_app/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: app_dev.R|data/providers.xlsx|data/us-500_https-::www.briandunning.com:sample-data:.csv
